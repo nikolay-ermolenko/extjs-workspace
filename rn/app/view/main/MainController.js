@@ -12,7 +12,23 @@ Ext.define('RN.view.main.MainController', {
     },
 
     control: {
+        'rn-side-menu': {
+            initialize(cmp) {
+                cmp.el.on('swipe', (e) => {
+                    if (e.direction === 'right') {
+                        this.getViewModel().set('subMenuState', true);
+                    }
+                });
+            }
+        },
         'rn-sub-menu': {
+            initialize(cmp) {
+                cmp.el.on('swipe', (e) => {
+                    if (e.direction === 'left') {
+                        this.getViewModel().set('subMenuState', false);
+                    }
+                });
+            },
             beforehide() {
                 this.getViewModel().set('subMenuState', false);
             }
