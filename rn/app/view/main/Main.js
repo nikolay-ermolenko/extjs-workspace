@@ -3,7 +3,7 @@
  */
 Ext.define('RN.view.main.Main', {
 
-    extend: 'Ext.panel.Panel',
+    extend: 'Ext.Container',
 
     xtype: 'rn-main',
 
@@ -15,18 +15,32 @@ Ext.define('RN.view.main.Main', {
     controller: 'rn-main',
     viewModel: 'rn-main',
 
-    layout: 'center',
-
     bind: {
-        title: 'Main view DM {darkMode}'
+        style: 'padding-left:{sideMenuCalcWidth}px'
     },
 
-    items: {
-        xtype: 'togglefield',
-        bind: {
-            value: '{darkMode}',
-            label: '{darkModeLabel}',
+    layout: 'center',
+
+    items: [
+        {
+            xtype: 'rn-side-menu',
+            docked: 'left'
+        },
+        {
+            xtype: 'rn-sub-menu',
+            docked: 'left',
+            bind: {
+                padding: '0 0 0 {sideMenuCalcWidth}'
+            }
+        },
+        {
+            xtype: 'rn-settings',
+            title: 'Settings',
+            shadow: true,
+            width: '60%',
+            minWidth: 190,
+            maxWidth: 300
         }
-    }
+    ]
 
 });

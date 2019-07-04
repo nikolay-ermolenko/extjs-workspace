@@ -11,6 +11,14 @@ Ext.define('RN.view.main.MainController', {
         onChangeDarkMode: '{darkMode}'
     },
 
+    control: {
+        'rn-sub-menu': {
+            beforehide() {
+                this.getViewModel().set('subMenuState', false);
+            }
+        }
+    },
+
     onChangeDarkMode(darkMode) {
         const cssVariables = {
             light: {
@@ -23,6 +31,13 @@ Ext.define('RN.view.main.MainController', {
             }
         }
         Fashion.css.setVariables(cssVariables[darkMode ? 'dark' : 'light']);
+    },
+
+    toggleMainMenu() {
+        const vm = this.getViewModel(),
+            subMenuState = vm.get('subMenuState');
+
+        vm.set('subMenuState', !subMenuState);
     }
 
 });
