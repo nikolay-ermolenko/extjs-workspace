@@ -47,6 +47,7 @@ Ext.define('RN.view.login.Login', {
         items: [
             {
                 flex: 1,
+                padding: '20 0',
                 bind: '{systemSettings.fullName:htmlEncode}'
             },
             {
@@ -65,12 +66,39 @@ Ext.define('RN.view.login.Login', {
         buttons: [
             {
                 text: 'Enter',
+                ui: 'action',
                 buttonType: 'submit',
                 bind: {
                     disabled: '{!isValid}'
                 },
                 handler: 'login'
             }
-        ]
+        ],
+        buttonToolbar: {
+
+            responsiveConfig: {
+                wide: {
+                    docked: 'right',
+                },
+                tall: {
+                    docked: 'bottom',
+                }
+            },
+
+            layout: {
+                type: 'box',
+
+                responsiveConfig: {
+                    wide: {
+                        vertical: true,
+                        pack: 'start'
+                    },
+                    tall: {
+                        vertical: false,
+                        pack: 'center'
+                    }
+                }
+            }
+        }
     }
 });

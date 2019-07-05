@@ -17,8 +17,10 @@ Ext.define('RN.view.main.Main', {
     ],
 
     responsiveFormulas: {
-        small: 'width < 500',
-        large: 'width >= 500'
+        tall: 'width < 500 || height >= 500',
+        wide: '!(width < 500 || height >= 500)',
+        small: 'width < 500 || height < 500',
+        large: '!(width < 500 || height < 500)'
     },
 
     controller: 'rn-main',

@@ -33,10 +33,26 @@ Ext.define('RN.view.workspace.Main', {
             items: {
                 xtype: 'rn-workspace-settings',
                 title: 'Settings',
-                shadow: true,
-                width: '60%',
-                minWidth: 190,
-                maxWidth: 300
+
+                responsiveConfig: {
+                    small: {
+                        top: 0,
+                        width: '100%',
+                        minWidth: null,
+                        maxWidth: null,
+                        shadow: false,
+                        padding: 40
+                    },
+                    large: {
+                        top: null,
+                        width: '60%',
+                        height: null,
+                        minWidth: 200,
+                        maxWidth: 340,
+                        shadow: true,
+                        padding: 20
+                    }
+                }
             }
         }
     ]
