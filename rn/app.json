@@ -90,7 +90,8 @@
         "css": "bootstrap.css"
     },
     "output": {
-        "base": "${workspace.build.dir}/${build.environment}/${app.name}",
+        // "base": "${workspace.build.dir}/${build.environment}/${app.name}",
+        "base": "${workspace.dir}/docs",
         "appCache": {
             "enable": false
         }
