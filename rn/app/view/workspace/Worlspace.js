@@ -12,6 +12,10 @@ Ext.define('RN.view.workspace.Main', {
     controller: 'rn-workspace',
     viewModel: 'rn-workspace',
 
+    bind: {
+        style: 'padding-left:{sideMenuCalcWidth}px'
+    },
+
     items: [
         {
             xtype: 'rn-workspace-side-bar',
