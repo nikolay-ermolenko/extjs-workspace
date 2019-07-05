@@ -20,7 +20,7 @@ Ext.define('RN.view.login.Login', {
         xtype: 'formpanel',
 
         bind: {
-            title: '{systemSettings.shortName:htmlEncode}'
+            title: '{systemSettings.shortName:htmlEncode} - ExtJS {extJSVersion.version}'
         },
 
         responsiveConfig: {

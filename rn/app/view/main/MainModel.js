@@ -13,9 +13,8 @@ Ext.define('RN.view.main.MainModel', {
             darkMode: null
         },
         systemLoaded: {},
-        // darkMode: null,
-        // darkModelLabelOff: 'Вызвать тьму',
-        // darkModelLabelOn: 'Да будет свет',
+
+        extJSVersion: Ext.getVersion(),
 
         sideMenuLabel: 'Ширина бокового меню',
         sideMenuWidth: 70,
