@@ -5,11 +5,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes">
 
+    <style>
+        :root {
+            --base-loader-bg-color: #f6f6f6;
+            --base-loader-color: #789;
+        }
+
+        body {
+            overflow: hidden;
+            background: var(--base-loader-bg-color);
+            padding: 0;
+            margin: 0;
+        }
+
+        .cssload-loader {
+            width: 46px;
+            height: 46px;
+            margin: auto;
+            display: table;
+            position: fixed;
+            top: calc(-23px + 50%);
+            left: 0px;
+            right: 0px;
+        }
+        .lds-dual-ring {
+            display: inline-block;
+            width: 64px;
+            height: 64px;
+        }
+        .lds-dual-ring:after {
+            content: " ";
+            display: block;
+            width: 46px;
+            height: 46px;
+            margin: 1px;
+            border-radius: 50%;
+            border: 5px solid var(--base-loader-color);
+            border-color: var(--base-loader-color) transparent var(--base-loader-color) transparent;
+            animation: lds-dual-ring 1.2s linear infinite;
+        }
+        @keyframes lds-dual-ring {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+    </style>
+
     <title>RN</title>
+
+    <script>
+        var root = document.documentElement,
+            darkMode = localStorage.getItem('system-dark-mode') || 'light',
+            modeColors = {
+                light: {
+                    '--base-loader-bg-color': '#f6f6f6',
+                    '--base-loader-color': '#36C'
+                },
+                dark: {
+                    '--base-loader-bg-color': '#303030',
+                    '--base-loader-color': '#678'
+                }
+            },
+        properties = Object.keys(modeColors[darkMode] || {});
+
+        for(var i = 0, l = properties.length, property, value; i < l; i++) {
+            property = properties[i];
+            value = modeColors[darkMode][property];
+            root.style.setProperty(property, value);
+        }
+    </script>
 
     <!-- The line below must be kept intact for Sencha Cmd to build your application -->
     <script id="microloader" data-app="ad6b2d75-12d4-4fb6-a5e2-d44f8e7d3a8c" type="text/javascript" src="bootstrap.js"></script>
 
 </head>
-<body></body>
+<body>
+
+    <div id="loading-parent" class="cssload-loader">
+        <div class="lds-dual-ring"></div>
+    </div>
+
+
+</body>
 </html>

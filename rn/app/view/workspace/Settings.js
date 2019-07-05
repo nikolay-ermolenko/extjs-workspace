@@ -1,8 +1,11 @@
-Ext.define('RN.view.main.Settings', {
+/**
+ * 
+ */
+Ext.define('RN.view.workspace.Settings', {
 
     extend: 'Ext.form.Panel',
 
-    xtype: 'rn-settings',
+    xtype: 'rn-workspace-settings',
 
     items: [
         {
@@ -12,7 +15,7 @@ Ext.define('RN.view.main.Settings', {
         {
             xtype: 'togglefield',
             bind: {
-                value: '{darkMode}',
+                value: '{darkModeCalc}',
                 label: '{darkModeLabel}',
             }
         },

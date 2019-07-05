@@ -7,6 +7,10 @@ Ext.define('RN.Application', {
 
     name: 'RN',
 
+    controllers: [
+        'RN.controller.Root'
+    ],
+
     quickTips: false,
 
     platformConfig: {

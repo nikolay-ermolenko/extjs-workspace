@@ -8,31 +8,32 @@ Ext.define('RN.view.main.MainController', {
     alias: 'controller.rn-main',
 
     bindings: {
-        onChangeDarkMode: '{darkMode}'
+        onChangeSystemLoaded: {
+            bindTo: '{systemLoaded}',
+            deep: true
+        },
+        onChangeDarkMode: '{darkModeCalc}',
+        onChangeSystemAuthenticated: '{systemAuthenticated}'
+
     },
 
-    control: {
-        'rn-side-menu': {
-            initialize(cmp) {
-                cmp.el.on('swipe', (e) => {
-                    if (e.direction === 'right') {
-                        this.getViewModel().set('subMenuState', true);
-                    }
-                });
-            }
-        },
-        'rn-sub-menu': {
-            initialize(cmp) {
-                cmp.el.on('swipe', (e) => {
-                    if (e.direction === 'left') {
-                        this.getViewModel().set('subMenuState', false);
-                    }
-                });
-            },
-            beforehide() {
-                this.getViewModel().set('subMenuState', false);
-            }
+    onChangeSystemLoaded({ settings, status }) {
+        if (settings && status) {
+            Ext.RC.removeLoadingMask();
+            Ext.Viewport.setVisibility(true);
         }
+    },
+
+    onChangeSystemAuthenticated(authenticated) {
+        const view = this.getView();
+        view.removeAll(true);
+
+        if (authenticated) {
+            view.add({ xtype: 'rn-workspace' });
+        } else {
+            view.add({ xtype: 'rn-login' });
+        }
+
     },
 
     onChangeDarkMode(darkMode) {
@@ -46,14 +47,8 @@ Ext.define('RN.view.main.MainController', {
                 'base-color': '#678'
             }
         }
+        localStorage.setItem('system-dark-mode', darkMode ? 'dark' : 'light');
         Fashion.css.setVariables(cssVariables[darkMode ? 'dark' : 'light']);
-    },
-
-    toggleMainMenu() {
-        const vm = this.getViewModel(),
-            subMenuState = vm.get('subMenuState');
-
-        vm.set('subMenuState', !subMenuState);
     }
 
 });

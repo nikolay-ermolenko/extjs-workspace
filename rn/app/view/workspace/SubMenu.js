@@ -1,11 +1,11 @@
 /**
  * 
  */
-Ext.define('RN.view.main.SubMenu', {
+Ext.define('RN.view.workspace.SubMenu', {
 
     extend: 'Ext.Container',
 
-    xtype: 'rn-sub-menu',
+    xtype: 'rn-workspace-sub-menu',
 
     reference: 'workspace-sub-menu',
 
@@ -16,13 +16,14 @@ Ext.define('RN.view.main.SubMenu', {
         },
 
         onChangeA(subMenuState) {
+            const subMenu = this.getView();
             if (subMenuState) {
-                this.getView().getHideAnimation().stop();
-                this.getView().show();
+                subMenu.getHideAnimation().stop();
+                subMenu.show();
             }
             else {
-                this.getView().getShowAnimation().stop();
-                this.getView().hide();
+                subMenu.getShowAnimation().stop();
+                subMenu.hide();
             }
         }
     },
@@ -53,7 +54,7 @@ Ext.define('RN.view.main.SubMenu', {
         title: 'Меню',
         iconCls: `${Ext.baseCSSPrefix}fa fa-wrench`,
         items: {
-            xtype: 'rn-settings'
+            xtype: 'rn-workspace-settings'
         }
     }
 });

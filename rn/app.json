@@ -6,7 +6,8 @@
     "toolkit": "modern",
     "theme": "theme-material",
     "requires": [
-        "font-awesome"
+        "font-awesome",
+        "CN"
     ],
     "indexHtmlPath": "index.html",
     "classpath": [

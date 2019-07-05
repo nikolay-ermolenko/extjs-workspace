@@ -1,21 +1,15 @@
 /**
  * 
  */
-Ext.define('RN.view.main.MainModel', {
+Ext.define('RN.view.workspace.WorkspaceModel', {
 
     extend: 'Ext.app.ViewModel',
 
-    alias: 'viewmodel.rn-main',
+    alias: 'viewmodel.rn-workspace',
 
     data: {
-        systemSettings: {},
-        systemStatus: {
-            darkMode: null
-        },
-        systemLoaded: {},
-        // darkMode: null,
-        // darkModelLabelOff: 'Вызвать тьму',
-        // darkModelLabelOn: 'Да будет свет',
+        darkModelLabelOff: 'Вызвать тьму',
+        darkModelLabelOn: 'Да будет свет',
 
         sideMenuLabel: 'Ширина бокового меню',
         sideMenuWidth: 70,
@@ -27,30 +21,6 @@ Ext.define('RN.view.main.MainModel', {
     },
 
     formulas: {
-
-        systemAuthenticated: {
-            bind: {
-                deep: true,
-                bindTo: '{systemStatus}'
-            },
-            get(systemStatus) {
-                return systemStatus && systemStatus.authenticated || false;
-            }
-        },
-
-        darkModeCalc: {
-            bind: '{systemStatus.darkMode}',
-            get(darkMode) {
-                
-                if(darkMode === null) {
-                    return localStorage.getItem('system-dark-mode') === 'dark'
-                }
-                return darkMode;
-            },
-            set(value) {
-                this.set('systemStatus.darkMode', value);
-            }
-        },
 
         darkModeLabel: {
             bind: '{darkMode}',
