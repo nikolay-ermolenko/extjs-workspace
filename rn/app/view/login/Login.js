@@ -18,13 +18,31 @@ Ext.define('RN.view.login.Login', {
 
     items: {
         xtype: 'formpanel',
+
         bind: {
             title: '{systemSettings.shortName:htmlEncode}'
         },
-        width: '60%',
-        minWidth: 200,
-        maxWidth: 340,
-        shadow: true,
+
+        responsiveConfig: {
+            small: {
+                top: 0,
+                width: '100%',
+                minWidth: null,
+                maxWidth: null,
+                shadow: false,
+                padding: 40
+            },
+            large: {
+                top: null,
+                width: '60%',
+                height: null,
+                minWidth: 200,
+                maxWidth: 340,
+                shadow: true,
+                padding: 20
+            }
+        },
+
         modelValidation: true,
         items: [
             {

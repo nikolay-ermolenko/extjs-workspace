@@ -12,6 +12,15 @@ Ext.define('RN.view.main.Main', {
         'Ext.layout.Center'
     ],
 
+    mixins: [
+        'Ext.mixin.Responsive'
+    ],
+
+    responsiveFormulas: {
+        small: 'width < 500',
+        large: 'width >= 500'
+    },
+
     controller: 'rn-main',
     viewModel: 'rn-main',
 

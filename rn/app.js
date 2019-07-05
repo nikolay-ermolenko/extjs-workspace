@@ -8,6 +8,8 @@ Ext.application({
     name: 'RN',
 
     requires: [
+        'Ext.Responsive',
+        'Ext.Toast',
         'RN.*'
     ],
 

@@ -41,8 +41,8 @@ Ext.define('RN.view.workspace.SideBar', {
         {
             iconCls: `${Ext.baseCSSPrefix}fa fa-sign-out`,
             handler() {
-                // const subMenu = this.lookupReference('workspace-sub-menu');
-                // subMenu.destroy();
+                const subMenu = this.lookupReferenceHolder().lookupReference('workspace-sub-menu');
+                subMenu.destroy();
                 Ext.RC.logout();
             }
         }
