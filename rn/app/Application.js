@@ -13,6 +13,8 @@ Ext.define('RN.Application', {
 
     quickTips: false,
 
+    defaultToken: 'home',
+
     platformConfig: {
         desktop: {
             quickTips: true

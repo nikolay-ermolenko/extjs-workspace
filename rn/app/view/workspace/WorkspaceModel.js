@@ -17,7 +17,9 @@ Ext.define('RN.view.workspace.WorkspaceModel', {
         sideMenuMaxWidth: 160,
         sideMenuStepWidth: 4,
 
-        subMenuState: false
+        subMenuState: false,
+
+        routeHash: null
     },
 
     formulas: {

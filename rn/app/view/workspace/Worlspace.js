@@ -32,7 +32,9 @@ Ext.define('RN.view.workspace.Main', {
             layout: 'center',
             items: {
                 xtype: 'rn-workspace-settings',
-                title: 'Settings',
+                bind: {
+                    title: 'Settings - {route}'
+                },
 
                 responsiveConfig: {
                     small: {

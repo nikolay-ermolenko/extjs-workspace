@@ -7,6 +7,38 @@ Ext.define('RN.view.main.MainController', {
 
     alias: 'controller.rn-main',
 
+    routes: {
+        ':section': {
+            action: 'onNavigate',
+            // before: 'onBeforeNavigate',
+            conditions: {
+                ':section': '([%a-zA-Z0-9\\./]+)'
+            }
+        }
+    },
+
+
+
+    onNavigate(appHash) {
+        console.log(11, appHash);
+        
+        this.getViewModel().set('route', appHash)
+        // console.log(555, this.getViewModel().get('routes.' + appHash));
+        
+        // debugger
+    },
+
+    // onBeforeNavigate(appHash, action) {
+    //     console.log(2222, appHash);
+    //     action.resume();
+    // },
+    // onNavigate(appHash) {
+    //     console.log(333, appHash);
+
+    //     this.getViewModel().set('route', appHash);
+    // },
+
+
     bindings: {
         onChangeSystemLoaded: {
             bindTo: '{systemLoaded}',

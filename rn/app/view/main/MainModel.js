@@ -22,10 +22,22 @@ Ext.define('RN.view.main.MainModel', {
         sideMenuMaxWidth: 160,
         sideMenuStepWidth: 4,
 
-        subMenuState: false
+        subMenuState: false,
+
+        route: null,
     },
 
     formulas: {
+
+        getParentRoute: {
+            bind: '{route}',
+            get(route) {
+                return {
+                    route,
+                    parent: (route || '').split('/').filter(r => r)[0]
+                };
+            }
+        },
 
         systemAuthenticated: {
             bind: {

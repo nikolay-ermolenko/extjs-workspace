@@ -7,6 +7,7 @@ Ext.define('RN.view.workspace.WorkspaceController', {
 
     alias: 'controller.rn-workspace',
 
+   
     control: {
         'rn-workspace-side-bar': {
             initialize(cmp) {
@@ -30,7 +31,24 @@ Ext.define('RN.view.workspace.WorkspaceController', {
             }
         }
     },
+    
 
+    // redirectHome() {
+    //     this.redirectTo('home');
+    //     console.log(3333);
+        
+    // },
+
+    // onHomeNavigate() {
+
+    // },
+
+    // onBeforeHomeNavigate() {
+    //     console.log(2222, arguments, 'home');
+        
+    // },
+
+   
     toggleMainMenu() {
         const vm = this.getViewModel(),
             subMenuState = vm.get('subMenuState');
