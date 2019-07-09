@@ -61,7 +61,13 @@ Ext.define('RN.controller.Root', {
         } catch (e) { }
     },
 
+    onBeforeNavigate(appHash, action) {
+        console.log(555, appHash);
+        action.resume();
+    },
+
     onNavigate(appHash) {
+        console.log(777, appHash);
         this.setMainViewModel('route', appHash);
     }
 

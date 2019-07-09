@@ -7,103 +7,58 @@ Ext.define('RN.view.workspace.Settings', {
 
     xtype: 'rn-workspace-settings',
 
-    
+
     controller: {
 
-        // bindings: {
-        //     onRouteChange: '{getParentRoute}'
-        // },
-        // onRouteChange(a) {
-        //     console.log('settings', a);
-            
-        // },
-    
+        bindings: {
+            onRouteChange: '{route}'
+        },
+
+        onRouteChange(route) {
+            if (/settings\/list(\/*)(.*)/.test(route) && !this.lookupReference('aaContainer')) {
+                this.getView().add({
+                    reference: 'aaContainer',
+                    xtype: 'tabpanel',
+                    listeners: {
+                        activeItemchange(a, v) {
+                            if(v.itemId === 'list') {
+
+                            } else {
+
+                            }
 
 
-        // routes: {
-        //     ':section': {
-        //         action: 'onNavigate',
-        //         // before: 'onBeforeNavigate',
-        //         conditions: {
-        //             ':section': '([%a-zA-Z0-9\\./]+)'
-        //         }
-        //     }
-        // },
-
-        // onNavigate(appHash) {
-        //     console.log('settings', appHash);
-            
-
-        // },
-
-        onPagesNavigate(appHash) {
-            console.log(5555, 'settings');
-
-            // this.getView().lookupReference('aaContainer').removeAll(true);
-            this.getView().lookupReference('aaContainer').add({
-                xtype: 'panel',
-                title: 'INNER',
-                controller: {
-
-                    routes: {
-                        'subpage': {
-                            // action: 'onPagesNavigate',
-                            // before: 'onBeforeNavigate'
-                        },
-                        'subpage/': {
-                            // action: 'onPagesNavigate',
-                            // before: 'onBeforeNavigate'
                         }
                     },
+                    items: [
+                        {
+                            title: 'AAA',
+                            itemId: 'list'
+                        },
+                        {
+                            title: 'BBB',
+                            itemId: 'card'
+                        },
+                        {
+                            title: 'CCC',
+                            itemId: 'edit'
+                        }
+                    ]
+                });
 
-                },
-                items: [
-                    {xtype: 'button', text: 'SUBPAGE',
-                    handler: (btn) => {
-                        console.log(btn);
-                        
-                        btn.lookupController().redirectTo('subpage')
-                    }
-                },
-                    {xtype: 'button', text: 'LIST'},
-                    {xtype: 'button', text: 'ITEM'},
-                    {xtype: 'button', text: 'ITEM EDIT'}
-                ]
-            })
 
 
-            
-            this.getViewModel().set('routeHash', 'settings');
-        },
-    
-        onBeforeNavigate(appHash, action) {
-            appHash.resume();
+
+            } else {
+                try {
+                    this.lookupReference('aaContainer').destroy();
+                } catch (e) {
+
+                }
+            }
         }
-    
+
     },
-
-    // viewModel: {
-    //     formulas: {
-
-    //         getParentRoute: {
-    //             bind: '{route}',
-    //             get(route) {
-    //                 return {
-    //                     route,
-    //                     parent: (route || '').split('/').filter(r => r)[0]
-    //                 };
-    //             }
-    //         }
-    //     }
-    // },
-    //     data: {
-    //         routes: {
-    //             settings: {
-    //                 subpage: 'subpage'
-    //             }
-    //         }
-    //     }
-    // },
 
     items: [
         {
@@ -117,7 +72,7 @@ Ext.define('RN.view.workspace.Settings', {
         },
         {
             xtype: 'button',
-            bind: {text: `{getParentRoute.route} ${Ext.getVersion().version}`},
+            bind: { text: `{getParentRoute.route} ${Ext.getVersion().version}` },
             handler: (btn) => btn.lookupController().redirectTo('settings')
         },
         {
@@ -145,7 +100,7 @@ Ext.define('RN.view.workspace.Settings', {
         //         {
         //             getCountText(locale, numbers) {
         //                 var count = numbers.length;
-        
+
         //                 if (count > 1) {
         //                     return Ext.String.format(locale.lastRequestsText, count);
         //                 }
