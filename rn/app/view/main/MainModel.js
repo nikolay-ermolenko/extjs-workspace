@@ -34,7 +34,7 @@ Ext.define('RN.view.main.MainModel', {
             get(route) {
                 return {
                     route,
-                    parent: (route || '').split('/').filter(r => r)[0]
+                    parent: (route || '').split('|').filter(r => r)[0]
                 };
             }
         },

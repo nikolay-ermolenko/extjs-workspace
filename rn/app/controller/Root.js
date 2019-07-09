@@ -59,6 +59,10 @@ Ext.define('RN.controller.Root', {
         try {
             Ext.get('loading-parent').destroy();
         } catch (e) { }
+    },
+
+    onNavigate(appHash) {
+        this.setMainViewModel('route', appHash);
     }
 
 });

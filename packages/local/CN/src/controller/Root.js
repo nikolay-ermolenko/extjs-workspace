@@ -9,7 +9,8 @@ Ext.define('CN.controller.Root', {
         'CN.controller.Settings',
         'CN.controller.Status',
         'CN.controller.Log',
-        'CN.controller.Auth'
+        'CN.controller.Auth',
+        'CN.controller.Route'
     ],
 
     onLaunch() {

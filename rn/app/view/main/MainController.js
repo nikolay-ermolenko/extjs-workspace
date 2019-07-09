@@ -7,26 +7,41 @@ Ext.define('RN.view.main.MainController', {
 
     alias: 'controller.rn-main',
 
-    routes: {
-        ':section': {
-            action: 'onNavigate',
-            // before: 'onBeforeNavigate',
-            conditions: {
-                ':section': '([%a-zA-Z0-9\\./]+)'
-            }
-        }
-    },
+    // routes: {
+    //     ':path': {
+    //         action: 'onNavigate',
+    //         before: 'onBeforeNavigate',
+    //         conditions: {
+    //             ':path': '([%a-zA-Z0-9\\./]+)'
+    //         }
+    //     }
+    // },
+
+    // onBeforeNavigate(appHash, action) {
+
+    //     if(/^\.\/.*/.test(appHash)) {
+
+    //         console.log(444, appHash, Ext.util.History.getToken(), Ext.util.History);
+            
+
+    //     action.stop();
+    //     } else {
+    //         action.resume();
+    //     }
 
 
+    //     // console.log('before', Ext.util.History.getToken(), appHash, action);
+    //     // action.stop();
+    // },
 
-    onNavigate(appHash) {
-        console.log(11, appHash);
+    // onNavigate(appHash) {
+    //     console.log(11, appHash);
         
-        this.getViewModel().set('route', appHash)
-        // console.log(555, this.getViewModel().get('routes.' + appHash));
+    //     this.getViewModel().set('route', appHash)
+    //     // console.log(555, this.getViewModel().get('routes.' + appHash));
         
-        // debugger
-    },
+    //     // debugger
+    // },
 
     // onBeforeNavigate(appHash, action) {
     //     console.log(2222, appHash);

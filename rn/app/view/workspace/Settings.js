@@ -10,13 +10,13 @@ Ext.define('RN.view.workspace.Settings', {
     
     controller: {
 
-        bindings: {
-            onRouteChange: '{getParentRoute}'
-        },
-        onRouteChange(a) {
-            console.log('settings', a);
+        // bindings: {
+        //     onRouteChange: '{getParentRoute}'
+        // },
+        // onRouteChange(a) {
+        //     console.log('settings', a);
             
-        },
+        // },
     
 
 
@@ -82,20 +82,20 @@ Ext.define('RN.view.workspace.Settings', {
     
     },
 
-    viewModel: {
-        formulas: {
+    // viewModel: {
+    //     formulas: {
 
-            getParentRoute: {
-                bind: '{route}',
-                get(route) {
-                    return {
-                        route,
-                        parent: (route || '').split('/').filter(r => r)[0]
-                    };
-                }
-            }
-        }
-    },
+    //         getParentRoute: {
+    //             bind: '{route}',
+    //             get(route) {
+    //                 return {
+    //                     route,
+    //                     parent: (route || '').split('/').filter(r => r)[0]
+    //                 };
+    //             }
+    //         }
+    //     }
+    // },
     //     data: {
     //         routes: {
     //             settings: {
@@ -113,7 +113,7 @@ Ext.define('RN.view.workspace.Settings', {
         {
             xtype: 'button',
             text: 'Home',
-            // handler: 'redirectHome'
+            handler: (btn) => btn.lookupController().redirectTo('./list')
         },
         {
             xtype: 'button',
@@ -127,35 +127,35 @@ Ext.define('RN.view.workspace.Settings', {
                 label: '{darkModeLabel}',
             }
         },
-        {
-            reference: 'aaContainer',
-            layout: 'fit',
-            data: {
-                locale: 'aAAA',
-                number: 44
-            },
-            tpl: [
-                `<tpl for=".">
-                    <div class="info-icon">AAAAADDDDDD</div>
-                    <div class="info-text">
-                        {[this.getCountText(values.locale, values.numbers)]}
-                    </div>
-                    <div class="close-icon"></div>
-                </tpl>`,
-                {
-                    getCountText(locale, numbers) {
-                        var count = numbers.length;
+        // {
+        //     reference: 'aaContainer',
+        //     layout: 'fit',
+        //     data: {
+        //         locale: 'aAAA',
+        //         number: 44
+        //     },
+        //     tpl: [
+        //         `<tpl for=".">
+        //             <div class="info-icon">AAAAADDDDDD</div>
+        //             <div class="info-text">
+        //                 {[this.getCountText(values.locale, values.numbers)]}
+        //             </div>
+        //             <div class="close-icon"></div>
+        //         </tpl>`,
+        //         {
+        //             getCountText(locale, numbers) {
+        //                 var count = numbers.length;
         
-                        if (count > 1) {
-                            return Ext.String.format(locale.lastRequestsText, count);
-                        }
-                        else {
-                            return Ext.String.format(locale.lastRequestText, numbers[0]);
-                        }
-                    }
-                }
-            ]
-        },
+        //                 if (count > 1) {
+        //                     return Ext.String.format(locale.lastRequestsText, count);
+        //                 }
+        //                 else {
+        //                     return Ext.String.format(locale.lastRequestText, numbers[0]);
+        //                 }
+        //             }
+        //         }
+        //     ]
+        // },
         {
             xtype: 'spinnerfield',
             bind: {
