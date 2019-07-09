@@ -1,5 +1,6 @@
 /build
 /ext
+/ext*
 bootstrap.*
 classic.json*
 modern.json*
