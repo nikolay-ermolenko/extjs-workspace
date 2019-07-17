@@ -47,7 +47,7 @@ Ext.define('RN.view.main.MainModel', {
                 return darkMode;
             },
             set(value) {
-                this.set('systemStatus.darkMode', value);
+                this.set('systemStatus.darkMode', Boolean(value));
             }
         },
 
