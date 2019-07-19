@@ -58,7 +58,9 @@ Ext.define('RN.controller.Root', {
     removeLoadingMask() {
         try {
             Ext.get('loading-parent').destroy();
-        } catch (e) { }
+        } catch (e) {
+            Ext.RC.logError('ERR-0002', e);
+        }
     }
 
 });
