@@ -24,7 +24,14 @@ Ext.define('RN.view.login.LoginModel', {
                 deep: true
             },   
             get(auth) {
-                return auth.isValid();
+                let res = false;
+
+                try {
+                    res = auth.isValid();
+                } catch(e) {
+                    Ext.RC.logError('ERR-0003', e);
+                }
+                return res;
             }
         }
     }

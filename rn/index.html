@@ -52,7 +52,14 @@
                 transform: rotate(360deg);
             }
         }
-
+        .x-nativescroller::-webkit-scrollbar {
+            display: none;
+        }
+        .x-nativescroller {
+            -ms-overflow-style: none; 
+            overflow: auto;
+        }
+        
     </style>
 
     <title>RN</title>

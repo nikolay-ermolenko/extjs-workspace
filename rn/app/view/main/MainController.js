@@ -17,7 +17,8 @@ Ext.define('RN.view.main.MainController', {
 
     },
 
-    onChangeSystemLoaded({ settings, status }) {
+    onChangeSystemLoaded(systemLoaded) {
+        const { settings, status } = systemLoaded || {};
         if (settings && status) {
             Ext.RC.removeLoadingMask();
             Ext.Viewport.setVisibility(true);

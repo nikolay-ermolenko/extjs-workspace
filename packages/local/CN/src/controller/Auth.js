@@ -10,7 +10,8 @@ Ext.define('CN.controller.Auth', {
     logoutSuccess: Ext.emptyFn,
     logoutFailed: Ext.emptyFn,
 
-    login({ login, password }) {
+    login(config) {
+        const { login, password } = config || {};
         return Ext.Ajax.request({
             url: '/api/system/login',
             params: {

@@ -44,6 +44,7 @@ Ext.define('RN.view.main.MainModel', {
                 if(darkMode === null) {
                     return localStorage.getItem('system-dark-mode') === 'dark'
                 }
+
                 return darkMode;
             },
             set(value) {
