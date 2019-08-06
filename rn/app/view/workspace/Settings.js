@@ -9,6 +9,21 @@ Ext.define('RN.view.workspace.Settings', {
 
     items: [
         {
+            xtype: 'mt-button',
+            text: 'Add User'
+        },
+        {
+            xtype: 'mt-button',
+            text: 'DEl User',
+            listeners: {
+                click: () => console.log(44444)
+            }
+        },
+        {
+            xtype: 'mt-button',
+            bind: 'WDTH: {sideMenuWidth}',
+        },
+        {
             xtype: 'textfield',
             bind: '{subMenuState}'
         },

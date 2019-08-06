@@ -60,6 +60,13 @@ Ext.define('RN.view.workspace.SubMenu', {
                                 handler(btn) {
                                     btn.up().up().down('list').getStore().add({id:Math.random(),name:'dfgdgdfgfg - ' + Math.random()})
                                 }
+                            },
+                            {
+                                xtype: 'mt-button',
+                                text: 'ADD',
+                                listeners: {
+                                    click: (btn) => btn.up().up().down('list').getStore().add({id:Math.random(),name:'dfgdgdfgfg - ' + Math.random()})
+                                }
                             }
                         ]
                     },

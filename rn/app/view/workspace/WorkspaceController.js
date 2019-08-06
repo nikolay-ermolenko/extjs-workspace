@@ -8,6 +8,10 @@ Ext.define('RN.view.workspace.WorkspaceController', {
     alias: 'controller.rn-workspace',
 
     control: {
+        'mt-button': {
+            click: (button) => console.log(55, button),
+            textchange: ({id}, text) => console.log(22, id, text)
+        },
         'rn-workspace-side-bar': {
             initialize(cmp) {
                 cmp.el.on('swipe', (e) => {
