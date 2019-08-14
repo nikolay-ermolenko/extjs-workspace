@@ -12,7 +12,6 @@
     position: relative;
     overflow: hidden;
     outline: none;
-    background: transparent;
     border: 0;
     border-radius: 0;
     transition: .4s cubic-bezier(.4,0,.2,1);
@@ -30,5 +29,14 @@
     .md-button-content {
         color: $button-color;
 
+    }
+
+    &:hover {
+        background-color: opacify($base-light-color, .8);
+
+    }
+
+    &:active {
+        background-color: opacify($base-pressed-color, 0);
     }
 }

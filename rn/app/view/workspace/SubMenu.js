@@ -47,31 +47,7 @@ Ext.define('RN.view.workspace.SubMenu', {
                 xtype: 'rn-workspace-settings'
             },
             {
-                xtype: 'container',
-                layout: 'hbox',
-                flex: 1,
-                items: [
-                    {
-                        xtype: 'toolbar',
-                        docked: 'top',
-                        items: [
-                            {
-                                text: 'ADD',
-                                handler(btn) {
-                                    btn.up().up().down('list').getStore().add({id:Math.random(),name:'dfgdgdfgfg - ' + Math.random()})
-                                }
-                            },
-                            {
-                                xtype: 'mt-button',
-                                text: 'ADD',
-                                listeners: {
-                                    click: (btn) => btn.up().up().down('list').getStore().add({id:Math.random(),name:'dfgdgdfgfg - ' + Math.random()})
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        xtype: 'list',
+                xtype: 'list',
                         reference: 'scrolledList',
                         flex: 1,
                         itemTpl: '{name}',
@@ -85,89 +61,132 @@ Ext.define('RN.view.workspace.SubMenu', {
                             }
                             return res;
                         })()
-                    },
-                    {
-                        width: 12,
-                        listeners: {
-                            resize() {
-                                console.log(66, arguments);
+            }
+            // {
+            //     xtype: 'container',
+            //     layout: 'hbox',
+            //     flex: 1,
+            //     items: [
+
+            //     ],
+            //     items2: [
+            //         {
+            //             xtype: 'toolbar',
+            //             docked: 'top',
+            //             items: [
+            //                 {
+            //                     text: 'ADD',
+            //                     handler(btn) {
+            //                         btn.up().up().down('list').getStore().add({id:Math.random(),name:'dfgdgdfgfg - ' + Math.random()})
+            //                     }
+            //                 },
+            //                 {
+            //                     xtype: 'mt-button',
+            //                     text: 'ADD',
+            //                     listeners: {
+            //                         click: (btn) => btn.up().up().down('list').getStore().add({id:Math.random(),name:'dfgdgdfgfg - ' + Math.random()})
+            //                     }
+            //                 }
+            //             ]
+            //         },
+            //         {
+            //             xtype: 'list',
+            //             reference: 'scrolledList',
+            //             flex: 1,
+            //             itemTpl: '{name}',
+            //             data: (function () {
+            //                 const res = [];
+            //                 for (let i = 0, l = 77; i < 77; i++) {
+            //                     res.push({
+            //                         id: i + 1,
+            //                         name: 'List Item # ' + (i + 1)
+            //                     })
+            //                 }
+            //                 return res;
+            //             })()
+            //         },
+            //         {
+            //             width: 12,
+            //             listeners: {
+            //                 resize() {
+            //                     console.log(66, arguments);
                                 
 
-                            }
-                        },
-                        items: {
-                            width: 12,
-                            height: 40,
-                            minHeight: 40,
-                            style: {
-                                width: 10,
-                                height: 40,
-                                background: 'rgb(40, 130, 205)',
-                                borderRadius: '0px'
-                            },
-                            listeners: {
-                                desroy() {
-                                    console.log('desroy');
+            //                 }
+            //             },
+            //             items: {
+            //                 width: 12,
+            //                 height: 40,
+            //                 minHeight: 40,
+            //                 style: {
+            //                     width: 10,
+            //                     height: 40,
+            //                     background: 'rgb(40, 130, 205)',
+            //                     borderRadius: '0px'
+            //                 },
+            //                 listeners: {
+            //                     desroy() {
+            //                         console.log('desroy');
                                     
-                                },
-                                painted(track) {
-                                    const list = track.up().up().down('list'),
-                                        scroller = list.getScrollable(),
-                                        trackHeight = track.up().innerElement.getHeight(),
-                                        barHeight = track.getHeight();
+            //                     },
+            //                     painted(track) {
+            //                         const list = track.up().up().down('list'),
+            //                             scroller = list.getScrollable(),
+            //                             trackHeight = track.up().innerElement.getHeight(),
+            //                             barHeight = track.getHeight();
 
 
-                                        track.el.setStyle('top', `0px`)
-                                        // console.log(9999,scroller.position.y);
-                                        if(track.customScrolled) {
-                                            return;
-                                        }
-                                        track.customScrolled = true;
-                                        scroller.on({
-                                            scroll() {
-                                                track.el.setStyle('top', `${(trackHeight - barHeight) * (scroller.position.y/ scroller.getMaxUserPosition().y)}px`)
-                                            // console.log(444, scroller.position.y/ scroller.getMaxUserPosition().y);
+            //                             track.el.setStyle('top', `0px`)
+            //                             // console.log(9999,scroller.position.y);
+            //                             if(track.customScrolled) {
+            //                                 return;
+            //                             }
+            //                             track.customScrolled = true;
+            //                             scroller.on({
+            //                                 scroll() {
+            //                                     track.el.setStyle('top', `${(trackHeight - barHeight) * (scroller.position.y/ scroller.getMaxUserPosition().y)}px`)
+            //                                 // console.log(444, scroller.position.y/ scroller.getMaxUserPosition().y);
 
-                                        }
-                                    });
+            //                             }
+            //                         });
                       
-                                    // track.el.setStyle('top', `${(trackHeight - barHeight) * (scroller.position.y/ scroller.getMaxUserPosition().y)}px`)
-                                    // console.log(9999,scroller.position.y, barHeight, trackHeight, scroller.getMaxUserPosition().y);
+            //                         // track.el.setStyle('top', `${(trackHeight - barHeight) * (scroller.position.y/ scroller.getMaxUserPosition().y)}px`)
+            //                         // console.log(9999,scroller.position.y, barHeight, trackHeight, scroller.getMaxUserPosition().y);
 
-                                    new Ext.drag.Source({
-                                        element: track.el,
-                                        constrain: {
-                                            element: true,
-                                            vertical: true
-                                        },
-                                        listeners: {
-                                            dragend: {
-                                                // buffer: 40,
-                                                fn(bar, info) {
-                                                console.log('dragend');
+            //                         new Ext.drag.Source({
+            //                             element: track.el,
+            //                             constrain: {
+            //                                 element: true,
+            //                                 vertical: true
+            //                             },
+            //                             listeners: {
+            //                                 dragend: {
+            //                                     // buffer: 40,
+            //                                     fn(bar, info) {
+            //                                     console.log('dragend');
                                                 
-                                                    const list = track.up().up().down('list'),
-                                                        scroller = list.getScrollable(),
-                                                        trackHeight = track.up().innerElement.getHeight(),
-                                                        barHeight = track.innerElement.getHeight(),
-                                                        posY = parseInt(bar.getElement().getStyleValue('top')),
-                                                        ratio = posY / (trackHeight - barHeight);
+            //                                         const list = track.up().up().down('list'),
+            //                                             scroller = list.getScrollable(),
+            //                                             trackHeight = track.up().innerElement.getHeight(),
+            //                                             barHeight = track.innerElement.getHeight(),
+            //                                             posY = parseInt(bar.getElement().getStyleValue('top')),
+            //                                             ratio = posY / (trackHeight - barHeight);
 
-                                                    scroller.doScrollTo(0, scroller.getMaxUserPosition().y * ratio);
+            //                                         scroller.doScrollTo(0, scroller.getMaxUserPosition().y * ratio);
 
 
 
-                                                    // console.log(22, scroller.getMaxUserPosition(), ratio, barHeight, trackHeight, parseInt(bar.getElement().getStyleValue('top')));
-                                                }
-                                            }
-                                        }
-                                    });
-                                }
-                            }
-                        }
-                    }
-                ]
-            }
+            //                                         // console.log(22, scroller.getMaxUserPosition(), ratio, barHeight, trackHeight, parseInt(bar.getElement().getStyleValue('top')));
+            //                                     }
+            //                                 }
+            //                             }
+            //                         });
+            //                     }
+            //                 }
+            //             }
+            //         }
+            //     ]
+            // }
         ]
     }
 });

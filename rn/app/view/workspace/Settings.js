@@ -9,6 +9,19 @@ Ext.define('RN.view.workspace.Settings', {
 
     items: [
         {
+            scrollable: true,
+            width: '100%',
+            height: 300,
+            itemId: 'aaa',
+            items: {
+                style: {
+                    background: 'url("https://image.shutterstock.com/z/stock-photo-cube-concrete-abstract-background-d-rendering-image-1033489816.jpg")'
+                },
+                width: 1000,
+                height: 1000
+            }
+        },
+        {
             xtype: 'mt-button',
             text: 'Add User'
         },
