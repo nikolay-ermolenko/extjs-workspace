@@ -9,17 +9,62 @@ Ext.define('RN.view.workspace.Settings', {
 
     items: [
         {
+            xtype: 'toolbar',
+            docked: 'top',
+            items: [
+                {
+                    xtype: 'mt-button',
+                    text: 'INC',
+                    listeners: {
+                        click(btn) {
+                            var vm = btn.lookupViewModel();
+                            vm.set('imgWidth', vm.get('imgWidth') + 40);
+                            vm.set('imgHeight', vm.get('imgHeight') + 40);
+                        }
+                    }
+                },
+                {
+                    xtype: 'mt-button',
+                    text: 'DEC',
+                    listeners: {
+                        click(btn) {
+                            var vm = btn.lookupViewModel();
+
+                            if (vm.get('imgWidth') < 80) {
+                                return;
+                            }
+
+                            vm.set('imgWidth', vm.get('imgWidth') - 40);
+                            vm.set('imgHeight', vm.get('imgHeight') - 40);
+                        }
+                    }
+                }
+            ]
+        },
+        {
             scrollable: true,
             width: '100%',
             height: 300,
-            itemId: 'aaa',
-            items: {
+            layout: 'vbox',
+            items: [{
                 style: {
-                    background: 'url("https://image.shutterstock.com/z/stock-photo-cube-concrete-abstract-background-d-rendering-image-1033489816.jpg")'
+                    backgroundImage: 'url("https://image.shutterstock.com/z/stock-vector-abstract-hexagon-background-technology-polygonal-design-digital-futuristic-minimalism-vector-490655017.jpg")',
+                    backgroundSize: 'cover'
                 },
-                width: 1000,
-                height: 1000
-            }
+                bind: {
+                    width: '{imgWidth}',
+                    height: '{imgHeight}'
+                }
+            },{
+                style: {
+                    backgroundImage: 'url("https://image.shutterstock.com/z/stock-photo-abstract-background-of-acrylic-paint-in-color-tones-1456636829.jpg")',
+                    backgroundSize: 'cover'
+                },
+                bind: {
+                    width: '{imgWidth}',
+                    height: '{imgHeight}'
+                }
+            }]
         },
         {
             xtype: 'mt-button',

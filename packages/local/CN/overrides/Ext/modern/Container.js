@@ -2,13 +2,57 @@ Ext.define('CN.overrides.Container', {
 
     override: 'Ext.Container',
 
+
     template: [{
-        cls: 'x-container x-container-body-el x-layout-box x-align-stretch x-horizontal aaaaaaaaaaaaaaaaaaaaaaaaa',
+        reference: 'bodyElement',
+        cls: Ext.baseCSSPrefix + 'body-el',
+        uiCls: 'body-el'
+    },{
+        reference: 'vScrollTrackElement',
         style: {
-            width: '100%',
-            height: '100%',
-            overflow: 'hidden'
+            height: 'calc(100% - 6px)',
+            width: '6px',
+            position: 'absolute',
+            right: 0,
+            background: 'rgba(255,255,255,.2)'
         },
+        children: [{
+            reference: 'vScrollBarElement',
+            style: {
+                width: '6px',
+                height: '40px',
+                background: 'rgba(40,40,40,.5)',
+                borderRadius: '0px',
+                position: 'absolute',
+                top: 0,
+                right: 0
+            }
+        }]
+    },{
+        reference: 'hScrollTrackElement',
+        style: {
+            height: '6px',
+            width: 'calc(100% - 6px)',
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            background: 'rgba(255,255,255,.2)'
+        },
+        children: [{
+            reference: 'hScrollBarElement',
+            style: {
+                width: '40px',
+                height: '6px',
+                background: 'rgba(40,40,40,.5)',
+                borderRadius: '0px',
+                position: 'absolute',
+                top: 0,
+                left: 0
+            }
+        }]
+    }],
+    template2: [{
+        cls: 'x-container x-container-body-el x-layout-box x-align-stretch x-horizontal aaaaaaaaaaaaaaaaaaaaaaaaa',
         children: [
             {
                 reference: 'bodyElement',
@@ -18,8 +62,8 @@ Ext.define('CN.overrides.Container', {
             {
                 reference: 'vScrollTrackElement',
                 style: {
-                    height: '100%',
-                    width: '8px',
+                    height: 'calc(100% - 8px)',
+                    width: '4px',
                     position: 'absolute',
                     right: 0,
                     background: 'rgba(255,255,255,.2)'
@@ -27,10 +71,10 @@ Ext.define('CN.overrides.Container', {
                 children: [{
                     reference: 'vScrollBarElement',
                     style: {
-                        width: '8px',
+                        width: '4px',
                         height: '40px',
-                        background: '#444',
-                        borderRadius: '5px',
+                        background: 'rgba(40,40,40,.5)',
+                        borderRadius: '0px',
                         position: 'absolute',
                         top: 0,
                         right: 0
@@ -41,18 +85,19 @@ Ext.define('CN.overrides.Container', {
                 reference: 'hScrollTrackElement',
                 style: {
                     height: '8px',
-                    width: '100%',
+                    width: 'calc(100% - 8px)',
                     position: 'absolute',
                     bottom: 0,
-                    background: 'rgba(255,255,255,.6)'
+                    left: 0,
+                    background: 'rgba(255,255,255,.2)'
                 },
                 children: [{
                     reference: 'hScrollBarElement',
                     style: {
                         width: '40px',
                         height: '8px',
-                        background: '#444',
-                        borderRadius: '5px',
+                        background: 'rgba(40,40,40,.5)',
+                        borderRadius: '0px',
                         position: 'absolute',
                         top: 0,
                         left: 0
