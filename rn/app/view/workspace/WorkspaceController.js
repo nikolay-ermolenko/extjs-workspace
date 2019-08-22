@@ -9,8 +9,8 @@ Ext.define('RN.view.workspace.WorkspaceController', {
 
     control: {
         'mt-button': {
-            click: (button) => console.log(55, button),
-            textchange: ({id}, text) => console.log(22, id, text)
+            // click: (button) => console.log(55, button),
+            textchange: (btn, text) => console.log(99999)
         },
         'rn-workspace-side-bar': {
             initialize(cmp) {

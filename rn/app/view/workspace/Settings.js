@@ -42,29 +42,59 @@ Ext.define('RN.view.workspace.Settings', {
             ]
         },
         {
-            scrollable: true,
             width: '100%',
             height: 300,
             layout: 'vbox',
+            scrollable: true,
+            defaults: {
+                bind: {
+                    width: '{imgWidth}',
+                    height: '{imgHeight}'
+                }
+            },
             items: [{
                 style: {
                     backgroundImage: 'url("https://image.shutterstock.com/z/stock-vector-abstract-hexagon-background-technology-polygonal-design-digital-futuristic-minimalism-vector-490655017.jpg")',
                     backgroundSize: 'cover'
-                },
-                bind: {
-                    width: '{imgWidth}',
-                    height: '{imgHeight}'
                 }
-            },{
+            }, {
                 style: {
-                    backgroundImage: 'url("https://image.shutterstock.com/z/stock-photo-abstract-background-of-acrylic-paint-in-color-tones-1456636829.jpg")',
+                    backgroundImage: 'url("https://besthqwallpapers.com/img/download/22-8-2019/lines-4k-android-geometry-abstract-material-besthqwallpapers.com-1152x864.jpg")',
                     backgroundSize: 'cover'
-                },
-                bind: {
-                    width: '{imgWidth}',
-                    height: '{imgHeight}'
                 }
-            }]
+            }, {
+                style: {
+                    backgroundImage: 'url("https://avatars.yandex.net/get-music-content/114728/b2142ea6.a.6512155-1/m1000x1000")',
+                    backgroundSize: 'cover'
+                }
+            }, 
+            {
+                xtype: 'grid',
+                store: {
+                    data: (() => {
+                        const res = [];
+                        for(var i = 0, l = 300; i < l; i++){
+                            res.push({ id: i, name: `Item # ${i}` });
+                        }
+                        return res;
+                    })()
+                },
+                columns: [
+                    {
+                        dataIndex: 'id',
+                        text: 'ID',
+                        width: 90
+                    },
+                    {
+                        dataIndex: 'name',
+                        text: 'Name',
+                        flex: 1,
+                        minWidth: 110
+
+                    }
+                ]
+            }
+            ]
         },
         {
             xtype: 'mt-button',

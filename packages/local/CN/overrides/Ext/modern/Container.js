@@ -7,28 +7,33 @@ Ext.define('CN.overrides.Container', {
         reference: 'bodyElement',
         cls: Ext.baseCSSPrefix + 'body-el',
         uiCls: 'body-el'
-    },{
+    },
+    {
         reference: 'vScrollTrackElement',
         style: {
             height: 'calc(100% - 6px)',
             width: '6px',
             position: 'absolute',
             right: 0,
+            top: 0,
+            zIndex: 2,
             background: 'rgba(255,255,255,.2)'
         },
         children: [{
             reference: 'vScrollBarElement',
+            cls: Ext.baseCSSPrefix + 'panelheader ' + Ext.baseCSSPrefix + 'noborder-trbl',
             style: {
                 width: '6px',
                 height: '40px',
-                background: 'rgba(40,40,40,.5)',
+                minHeight: '40px',
+                // background: 'rgba(40,40,40,.5)',
                 borderRadius: '0px',
                 position: 'absolute',
                 top: 0,
                 right: 0
             }
         }]
-    },{
+    }, {
         reference: 'hScrollTrackElement',
         style: {
             height: '6px',
@@ -36,14 +41,17 @@ Ext.define('CN.overrides.Container', {
             position: 'absolute',
             bottom: 0,
             left: 0,
+            zIndex: 2,
             background: 'rgba(255,255,255,.2)'
         },
         children: [{
             reference: 'hScrollBarElement',
+            cls: Ext.baseCSSPrefix + 'panelheader ' + Ext.baseCSSPrefix + 'noborder-trbl',
             style: {
                 width: '40px',
+                minWidth: '40px',
                 height: '6px',
-                background: 'rgba(40,40,40,.5)',
+                // background: 'rgba(40,40,40,.5)',
                 borderRadius: '0px',
                 position: 'absolute',
                 top: 0,
@@ -111,18 +119,37 @@ Ext.define('CN.overrides.Container', {
 
         this.callParent(arguments);
 
+       
+
         var scroller = this.getScrollable();
 
         if (!this.vScrollBarElement || !this.hScrollBarElement) {
             return;
         }
 
-        if(!scroller || !scroller.getX()){
+        if (!scroller || !scroller.getX()) {
             this.hScrollTrackElement.setDisplayed('none');
         }
-        if(!scroller || !scroller.getY()){
+        if (!scroller || !scroller.getY()) {
             this.vScrollTrackElement.setDisplayed('none');
         }
+
+        this.observer = new window.MutationObserver(this.detectMutation.bind(this));
+        this.observer.observe(
+            this.bodyElement.dom,
+            {
+                attributes: true,
+                subtree: true,
+                childList: true
+            }
+        );
+
+        scroller && this.bodyElement.on({
+            scope: this,
+            resize: function() {
+                this.updateCustomScroll();
+            }
+        })
 
         if (scroller && Ext.isFunction(scroller.on)) {
             scroller.on({
@@ -180,6 +207,41 @@ Ext.define('CN.overrides.Container', {
                 }
             }
         });
+    },
+
+    detectMutation: function (mutations) {
+        let isChild = false;
+
+        for (let mutation of mutations) {
+
+            if (this.bodyElement && mutation.target.parentNode === this.bodyElement.dom) {
+                isChild = true;
+            }
+
+        }
+
+        if (isChild && this.getScrollable()) {
+            this.updateCustomScroll();
+        }
+
+    },
+
+    updateCustomScroll() {
+        var scroller = this.getScrollable(),
+            size = scroller.getSize(),
+            maxUserPosition = scroller.getMaxUserPosition(),
+            xRatio = (size.x - maxUserPosition.x) / size.x,
+            yRatio = (size.y - maxUserPosition.y) / size.y;
+
+        this.hScrollTrackElement.setDisplayed(maxUserPosition.x ? 'inherit' : 'none');
+        this.vScrollTrackElement.setDisplayed(maxUserPosition.y ? 'inherit' : 'none');
+
+        this.hScrollTrackElement.setWidth(maxUserPosition.y ? 'calc(100% - 6px)' : '100%');
+        this.vScrollTrackElement.setHeight(maxUserPosition.x ? 'calc(100% - 6px)' : '100%');
+
+        this.hScrollBarElement.setWidth(this.hScrollTrackElement.getWidth() * xRatio);
+        this.vScrollBarElement.setHeight(this.vScrollTrackElement.getHeight() * yRatio);
+        // console.log(66, scroller);
     }
 
 });
